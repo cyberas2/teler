@@ -1,6 +1,6 @@
 module github.com/kitabisa/teler
 
-go 1.18
+go 1.24.5
 
 require (
 	github.com/briandowns/spinner v1.18.1
@@ -15,7 +15,7 @@ require (
 	github.com/prometheus/client_golang v1.10.0
 	github.com/r3labs/sse/v2 v2.8.0
 	github.com/remeh/sizedwaitgroup v1.0.0
-	github.com/sahilm/fuzzy v0.1.0
+	github.com/sahilm/fuzzy v0.1.3
 	github.com/satyrius/gonx v1.4.0
 	github.com/slack-go/slack v0.8.2
 	github.com/valyala/fastjson v1.6.3
@@ -33,7 +33,6 @@ require (
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
-	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
