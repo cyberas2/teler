@@ -1,6 +1,6 @@
 module github.com/kitabisa/teler
 
-go 1.18
+go 1.26.0
 
 require (
 	github.com/briandowns/spinner v1.18.1
@@ -21,7 +21,7 @@ require (
 	github.com/valyala/fastjson v1.6.3
 	go.uber.org/automaxprocs v1.5.1
 	goji.io v2.0.2+incompatible
-	golang.org/x/text v0.6.0
+	golang.org/x/text v0.42.0
 	gopkg.in/validator.v2 v2.0.0-20200605151824-2b28d334fa05
 	gopkg.in/yaml.v2 v2.4.0
 )
