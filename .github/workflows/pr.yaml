@@ -38,7 +38,7 @@ jobs:
           semgrep scan --config auto --dryrun -q --include "**.go"
 
       - name: Cross-platform checks
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v7
         with: 
           version: latest
           args: build --clean --skip=validate --snapshot --timeout=30m
