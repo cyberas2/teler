@@ -1,0 +1,52 @@
+name: Pull Request
+on:
+  pull_request:
+    branches-ignore:
+      - dependabot/**
+
+jobs:
+  checks:
+    name: Pull Request Checks
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[ci skip]') == false && contains(github.event.head_commit.message, '[skip ci]') == false
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # - name: Run tests
+      #   run: make test
+
+      - name: Run GolangCI-Lint
+        uses: golangci/golangci-lint-action@v3.4.0
+        with:
+          version: latest
+          args: --tests=0 --timeout=30m
+
+      - name: Run Semgrep
+        run: |
+          python3 -m pip install semgrep
+          semgrep scan --config auto --dryrun -q --include "**.go"
+
+      - name: Cross-platform checks
+        uses: goreleaser/goreleaser-action@v5
+        with: 
+          version: latest
+          args: build --clean --skip=validate --snapshot --timeout=30m
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: go
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2

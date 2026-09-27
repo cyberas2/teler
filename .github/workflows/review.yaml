@@ -1,0 +1,30 @@
+name: Review  
+on: 
+  push:
+    paths:
+      - '**.go'
+  pull_request:
+    branches:
+      - master
+      - v2
+      - development
+
+jobs:
+  review:
+    name: Code Review  
+    runs-on: ubuntu-latest
+    if: startsWith(github.head_ref, 'dependabot/') == false
+    steps:  
+    - name: Check out code  
+      uses: actions/checkout@v3
+
+    - name: Run Semgrep
+      uses: returntocorp/semgrep-action@v1
+      with:
+        config: |
+          p/ci
+          p/owasp-top-ten
+          p/golang
+          p/command-injection
+          p/security-audit
+          p/secrets

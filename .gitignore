@@ -1,0 +1,17 @@
+bin/*
+dist/*
+teler.yaml
+.scannerwork/
+/teler.app
+# Local development / IDE / OS files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
